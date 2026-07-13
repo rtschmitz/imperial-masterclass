@@ -1,0 +1,1920 @@
+{
+  "format": "imperial-masterclass-typed-arrays-v1",
+  "app_version": "4.0.0",
+  "event_display_url_template": "",
+  "requirements": [
+    {
+      "id": "pair_opposite_charge",
+      "label": "Both pairs have different charges",
+      "description": "Requires a positive and a negative lepton in each selected pair.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_os",
+        "pair_b_is_os"
+      ]
+    },
+    {
+      "id": "pair_same_type",
+      "label": "Both pairs contain the same lepton type",
+      "description": "Requires ee or μμ rather than eμ in each selected pair.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_sf",
+        "pair_b_is_sf"
+      ]
+    },
+    {
+      "id": "pair_same_type_different_charge",
+      "label": "Same type, different charge",
+      "description": "Requires both selected pairs to be ee or μμ with one positive and one negative lepton.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_sf",
+        "pair_b_is_sf",
+        "pair_a_is_os",
+        "pair_b_is_os"
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pair_same_type_same_charge",
+      "label": "Same type, same charge",
+      "description": "Requires both selected pairs to be ee or μμ with matching charges.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_sf",
+        "pair_b_is_sf",
+        "pair_a_is_ss",
+        "pair_b_is_ss"
+      ],
+      "expected": [
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pair_different_type_different_charge",
+      "label": "Different type, different charge",
+      "description": "Requires both selected pairs to contain one electron and one muon with different charges.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_sf",
+        "pair_b_is_sf",
+        "pair_a_is_os",
+        "pair_b_is_os"
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pair_different_type_same_charge",
+      "label": "Different type, same charge",
+      "description": "Requires both selected pairs to contain one electron and one muon with matching charges.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "required",
+      "default": 1,
+      "unit": "",
+      "fields": [
+        "pair_a_is_sf",
+        "pair_b_is_sf",
+        "pair_a_is_ss",
+        "pair_b_is_ss"
+      ],
+      "expected": [
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    {
+      "id": "pair_min_pt",
+      "label": "Each pair pT",
+      "description": "Keeps events where both selected pairs exceed the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 20,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_pt",
+        "pair_b_pt"
+      ]
+    },
+    {
+      "id": "pair_min_energy",
+      "label": "Each pair energy",
+      "description": "Keeps events where both selected pairs exceed the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 35,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_energy",
+        "pair_b_energy"
+      ]
+    },
+    {
+      "id": "pair_min_pt_total",
+      "label": "Each pair scalar pT",
+      "description": "Adds the two lepton pT values without directional cancellation.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 30,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_pt_scalar",
+        "pair_b_pt_scalar"
+      ]
+    },
+    {
+      "id": "pair_min_momentum",
+      "label": "Each pair momentum",
+      "description": "Keeps events where both selected pairs exceed the momentum threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 25,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_momentum",
+        "pair_b_momentum"
+      ]
+    },
+    {
+      "id": "pair_min_mass",
+      "label": "Each pair mass — minimum",
+      "description": "Keeps events where both selected pair masses are above the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 12,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_mass",
+        "pair_b_mass"
+      ]
+    },
+    {
+      "id": "pair_max_mass",
+      "label": "Each pair mass — maximum",
+      "description": "Keeps events where both selected pair masses are below the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "<",
+      "default": 120,
+      "unit": "GeV",
+      "fields": [
+        "pair_a_mass",
+        "pair_b_mass"
+      ]
+    },
+    {
+      "id": "pair_min_dr",
+      "label": "Separation of each pair (ΔR)",
+      "description": "Removes pairs whose leptons are very close in detector angle.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 0.4,
+      "unit": "",
+      "fields": [
+        "pair_a_dr",
+        "pair_b_dr"
+      ]
+    },
+    {
+      "id": "pair_max_dr",
+      "label": "Separation of each pair (ΔR) — maximum",
+      "description": "Keeps pairs whose leptons are not farther apart than the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "<",
+      "default": 3.5,
+      "unit": "",
+      "fields": [
+        "pair_a_dr",
+        "pair_b_dr"
+      ]
+    },
+    {
+      "id": "pair_min_opening_angle",
+      "label": "Opening angle of each pair — minimum",
+      "description": "Keeps events where both pair opening angles exceed the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": ">",
+      "default": 0.5,
+      "unit": "rad",
+      "fields": [
+        "pair_a_opening_angle",
+        "pair_b_opening_angle"
+      ]
+    },
+    {
+      "id": "pair_max_opening_angle",
+      "label": "Opening angle of each pair — maximum",
+      "description": "Keeps events where both pair opening angles are below the threshold.",
+      "modes": [
+        "pairs"
+      ],
+      "comparison": "<",
+      "default": 3.0,
+      "unit": "rad",
+      "fields": [
+        "pair_a_opening_angle",
+        "pair_b_opening_angle"
+      ]
+    },
+    {
+      "id": "quad_charge_zero",
+      "label": "Absolute four-lepton charge",
+      "description": "A neutral parent should have a charge sum close to zero.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "≤",
+      "default": 0,
+      "unit": "",
+      "fields": [
+        "charge_sum"
+      ]
+    },
+    {
+      "id": "leading_lepton_pt",
+      "label": "Leading lepton pT",
+      "description": "The H→ZZ→4ℓ selection requires one lepton above 20 GeV.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 20,
+      "unit": "GeV",
+      "fields": [
+        "leading_lepton_pt"
+      ]
+    },
+    {
+      "id": "subleading_lepton_pt",
+      "label": "Second-highest lepton pT",
+      "description": "The H→ZZ→4ℓ selection requires another lepton above 10 GeV.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 10,
+      "unit": "GeV",
+      "fields": [
+        "subleading_lepton_pt"
+      ]
+    },
+    {
+      "id": "minimum_lepton_pt",
+      "label": "Lowest lepton pT",
+      "description": "Requires every lepton in the four-lepton candidate to exceed the threshold.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 5,
+      "unit": "GeV",
+      "fields": [
+        "min_lepton_pt"
+      ]
+    },
+    {
+      "id": "max_lepton_iso",
+      "label": "Largest lepton isolation",
+      "description": "Prompt leptons are usually isolated from nearby activity.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 0.35,
+      "unit": "",
+      "fields": [
+        "max_lepton_iso"
+      ]
+    },
+    {
+      "id": "max_abs_eta",
+      "label": "Largest lepton |η|",
+      "description": "Restricts all four leptons to the detector acceptance.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 2.4,
+      "unit": "",
+      "fields": [
+        "max_abs_lepton_eta"
+      ]
+    },
+    {
+      "id": "z1_mass_min",
+      "label": "Higher-mass Z candidate",
+      "description": "Sets the lower edge of the Z1 candidate mass window.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 40,
+      "unit": "GeV",
+      "fields": [
+        "z1_mass"
+      ]
+    },
+    {
+      "id": "z2_mass_min",
+      "label": "Lower-mass Z candidate",
+      "description": "Sets the lower edge of the Z2 candidate mass window.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 12,
+      "unit": "GeV",
+      "fields": [
+        "z2_mass"
+      ]
+    },
+    {
+      "id": "z1_mass_max",
+      "label": "Higher-mass Z candidate",
+      "description": "Sets the upper edge of the Z1 candidate mass window.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 120,
+      "unit": "GeV",
+      "fields": [
+        "z1_mass"
+      ]
+    },
+    {
+      "id": "z2_mass_max",
+      "label": "Lower-mass Z candidate",
+      "description": "Sets the upper edge of the Z2 candidate mass window.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 120,
+      "unit": "GeV",
+      "fields": [
+        "z2_mass"
+      ]
+    },
+    {
+      "id": "z1_mass_distance",
+      "label": "Z1 distance from the Z mass",
+      "description": "Limits how far the higher-mass candidate is from the known Z mass.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 20,
+      "unit": "GeV",
+      "fields": [
+        "abs_z1_mass_minus_z"
+      ]
+    },
+    {
+      "id": "z2_mass_distance",
+      "label": "Z2 distance from the Z mass",
+      "description": "Limits how far the lower-mass candidate is from the known Z mass.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 65,
+      "unit": "GeV",
+      "fields": [
+        "abs_z2_mass_minus_z"
+      ]
+    },
+    {
+      "id": "quad_min_pt",
+      "label": "Four-lepton pT",
+      "description": "An exploratory threshold on the combined transverse momentum.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 20,
+      "unit": "GeV",
+      "fields": [
+        "pt"
+      ]
+    },
+    {
+      "id": "quad_min_energy",
+      "label": "Four-lepton energy",
+      "description": "An exploratory threshold on the combined energy.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 120,
+      "unit": "GeV",
+      "fields": [
+        "energy"
+      ]
+    },
+    {
+      "id": "quad_min_pt_total",
+      "label": "Four-lepton scalar pT",
+      "description": "Adds all four lepton pT values without directional cancellation.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 60,
+      "unit": "GeV",
+      "fields": [
+        "pt_scalar"
+      ]
+    },
+    {
+      "id": "quad_min_momentum",
+      "label": "Four-lepton momentum",
+      "description": "An exploratory threshold on the combined three-dimensional momentum.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 30,
+      "unit": "GeV",
+      "fields": [
+        "momentum"
+      ]
+    },
+    {
+      "id": "quad_min_mass",
+      "label": "Four-lepton mass — minimum",
+      "description": "Keeps candidates above the selected four-lepton mass.",
+      "modes": [
+        "four"
+      ],
+      "comparison": ">",
+      "default": 70,
+      "unit": "GeV",
+      "fields": [
+        "mass"
+      ]
+    },
+    {
+      "id": "quad_max_mass",
+      "label": "Four-lepton mass — maximum",
+      "description": "Keeps candidates below the selected four-lepton mass.",
+      "modes": [
+        "four"
+      ],
+      "comparison": "<",
+      "default": 200,
+      "unit": "GeV",
+      "fields": [
+        "mass"
+      ]
+    }
+  ],
+  "collections": {
+    "Events": {
+      "file": "Events.dat",
+      "compression": "gzip",
+      "rows": 194716,
+      "uncompressed_bytes": 14019552,
+      "compressed_bytes": 1747633,
+      "sha256": "774e418842fdc4f51c5e07d96d541a74dfb2cdd0ee6c57a28c9a29668d86e08e",
+      "columns": {
+        "event_index": {
+          "type": "Float64Array",
+          "offset": 0,
+          "length": 194716
+        },
+        "run": {
+          "type": "Uint32Array",
+          "offset": 1557728,
+          "length": 194716
+        },
+        "luminosityBlock": {
+          "type": "Uint32Array",
+          "offset": 2336592,
+          "length": 194716
+        },
+        "event": {
+          "type": "Float64Array",
+          "offset": 3115456,
+          "length": 194716
+        },
+        "sample_id": {
+          "type": "Int32Array",
+          "offset": 4673184,
+          "length": 194716
+        },
+        "n_lepton": {
+          "type": "Int32Array",
+          "offset": 5452048,
+          "length": 194716
+        },
+        "n_electron": {
+          "type": "Int32Array",
+          "offset": 6230912,
+          "length": 194716
+        },
+        "n_muon": {
+          "type": "Int32Array",
+          "offset": 7009776,
+          "length": 194716
+        },
+        "n_dilepton": {
+          "type": "Int32Array",
+          "offset": 7788640,
+          "length": 194716
+        },
+        "n_ossf_dilepton": {
+          "type": "Int32Array",
+          "offset": 8567504,
+          "length": 194716
+        },
+        "n_quad": {
+          "type": "Int32Array",
+          "offset": 9346368,
+          "length": 194716
+        },
+        "n_zz_candidate": {
+          "type": "Int32Array",
+          "offset": 10125232,
+          "length": 194716
+        },
+        "best_m4l": {
+          "type": "Float32Array",
+          "offset": 10904096,
+          "length": 194716
+        },
+        "best_z1_mass": {
+          "type": "Float32Array",
+          "offset": 11682960,
+          "length": 194716
+        },
+        "best_z2_mass": {
+          "type": "Float32Array",
+          "offset": 12461824,
+          "length": 194716
+        },
+        "best_channel": {
+          "type": "Int32Array",
+          "offset": 13240688,
+          "length": 194716
+        }
+      }
+    },
+    "Leptons": {
+      "file": "Leptons.dat",
+      "compression": "gzip",
+      "rows": 493651,
+      "uncompressed_bytes": 17771436,
+      "compressed_bytes": 6719207,
+      "sha256": "f4f15b05538c13b9dee7e2f3a524d8b9c1767806d49d09b08dca59079da75383",
+      "columns": {
+        "event_index": {
+          "type": "Float64Array",
+          "offset": 0,
+          "length": 493651
+        },
+        "lepton_index": {
+          "type": "Int32Array",
+          "offset": 3949208,
+          "length": 493651
+        },
+        "abs_pdgid": {
+          "type": "Int32Array",
+          "offset": 5923812,
+          "length": 493651
+        },
+        "charge": {
+          "type": "Int32Array",
+          "offset": 7898416,
+          "length": 493651
+        },
+        "pt": {
+          "type": "Float32Array",
+          "offset": 9873020,
+          "length": 493651
+        },
+        "eta": {
+          "type": "Float32Array",
+          "offset": 11847624,
+          "length": 493651
+        },
+        "phi": {
+          "type": "Float32Array",
+          "offset": 13822228,
+          "length": 493651
+        },
+        "energy": {
+          "type": "Float32Array",
+          "offset": 15796832,
+          "length": 493651
+        }
+      }
+    },
+    "PairingOptions": {
+      "file": "PairingOptions.dat",
+      "compression": "gzip",
+      "rows": 233382,
+      "uncompressed_bytes": 38274648,
+      "compressed_bytes": 16194931,
+      "sha256": "f7c59bd85fd0b52a9f728d9d009aed4b8e1bc592573bc4244a4f900b6cad26fb",
+      "columns": {
+        "event_index": {
+          "type": "Float64Array",
+          "offset": 0,
+          "length": 233382
+        },
+        "quad_index": {
+          "type": "Int32Array",
+          "offset": 1867056,
+          "length": 233382
+        },
+        "quad_is_best": {
+          "type": "Int32Array",
+          "offset": 2800584,
+          "length": 233382
+        },
+        "pairing_id": {
+          "type": "Int32Array",
+          "offset": 3734112,
+          "length": 233382
+        },
+        "pair_a_lep1_index": {
+          "type": "Int32Array",
+          "offset": 4667640,
+          "length": 233382
+        },
+        "pair_a_lep2_index": {
+          "type": "Int32Array",
+          "offset": 5601168,
+          "length": 233382
+        },
+        "pair_b_lep1_index": {
+          "type": "Int32Array",
+          "offset": 6534696,
+          "length": 233382
+        },
+        "pair_b_lep2_index": {
+          "type": "Int32Array",
+          "offset": 7468224,
+          "length": 233382
+        },
+        "pair_a_mass": {
+          "type": "Float32Array",
+          "offset": 8401752,
+          "length": 233382
+        },
+        "pair_a_mass_squared": {
+          "type": "Float32Array",
+          "offset": 9335280,
+          "length": 233382
+        },
+        "pair_a_pt": {
+          "type": "Float32Array",
+          "offset": 10268808,
+          "length": 233382
+        },
+        "pair_a_energy": {
+          "type": "Float32Array",
+          "offset": 11202336,
+          "length": 233382
+        },
+        "pair_a_px": {
+          "type": "Float32Array",
+          "offset": 12135864,
+          "length": 233382
+        },
+        "pair_a_py": {
+          "type": "Float32Array",
+          "offset": 13069392,
+          "length": 233382
+        },
+        "pair_a_pz": {
+          "type": "Float32Array",
+          "offset": 14002920,
+          "length": 233382
+        },
+        "pair_a_momentum": {
+          "type": "Float32Array",
+          "offset": 14936448,
+          "length": 233382
+        },
+        "pair_a_pt_scalar": {
+          "type": "Float32Array",
+          "offset": 15869976,
+          "length": 233382
+        },
+        "pair_a_charge_sum": {
+          "type": "Int32Array",
+          "offset": 16803504,
+          "length": 233382
+        },
+        "pair_a_dr": {
+          "type": "Float32Array",
+          "offset": 17737032,
+          "length": 233382
+        },
+        "pair_a_dphi": {
+          "type": "Float32Array",
+          "offset": 18670560,
+          "length": 233382
+        },
+        "pair_a_opening_angle": {
+          "type": "Float32Array",
+          "offset": 19604088,
+          "length": 233382
+        },
+        "pair_a_is_os": {
+          "type": "Int32Array",
+          "offset": 20537616,
+          "length": 233382
+        },
+        "pair_a_is_sf": {
+          "type": "Int32Array",
+          "offset": 21471144,
+          "length": 233382
+        },
+        "pair_a_is_ss": {
+          "type": "Int32Array",
+          "offset": 22404672,
+          "length": 233382
+        },
+        "pair_b_mass": {
+          "type": "Float32Array",
+          "offset": 23338200,
+          "length": 233382
+        },
+        "pair_b_mass_squared": {
+          "type": "Float32Array",
+          "offset": 24271728,
+          "length": 233382
+        },
+        "pair_b_pt": {
+          "type": "Float32Array",
+          "offset": 25205256,
+          "length": 233382
+        },
+        "pair_b_energy": {
+          "type": "Float32Array",
+          "offset": 26138784,
+          "length": 233382
+        },
+        "pair_b_px": {
+          "type": "Float32Array",
+          "offset": 27072312,
+          "length": 233382
+        },
+        "pair_b_py": {
+          "type": "Float32Array",
+          "offset": 28005840,
+          "length": 233382
+        },
+        "pair_b_pz": {
+          "type": "Float32Array",
+          "offset": 28939368,
+          "length": 233382
+        },
+        "pair_b_momentum": {
+          "type": "Float32Array",
+          "offset": 29872896,
+          "length": 233382
+        },
+        "pair_b_pt_scalar": {
+          "type": "Float32Array",
+          "offset": 30806424,
+          "length": 233382
+        },
+        "pair_b_charge_sum": {
+          "type": "Int32Array",
+          "offset": 31739952,
+          "length": 233382
+        },
+        "pair_b_dr": {
+          "type": "Float32Array",
+          "offset": 32673480,
+          "length": 233382
+        },
+        "pair_b_dphi": {
+          "type": "Float32Array",
+          "offset": 33607008,
+          "length": 233382
+        },
+        "pair_b_opening_angle": {
+          "type": "Float32Array",
+          "offset": 34540536,
+          "length": 233382
+        },
+        "pair_b_is_os": {
+          "type": "Int32Array",
+          "offset": 35474064,
+          "length": 233382
+        },
+        "pair_b_is_sf": {
+          "type": "Int32Array",
+          "offset": 36407592,
+          "length": 233382
+        },
+        "pair_b_is_ss": {
+          "type": "Int32Array",
+          "offset": 37341120,
+          "length": 233382
+        }
+      }
+    },
+    "QuadLeptons": {
+      "file": "QuadLeptons.dat",
+      "compression": "gzip",
+      "rows": 77794,
+      "uncompressed_bytes": 11202336,
+      "compressed_bytes": 5231275,
+      "sha256": "a24c03e5dab2f961c6c77e879c3d58c991cffb5945e7662acff1488d77452c6d",
+      "columns": {
+        "event_index": {
+          "type": "Float64Array",
+          "offset": 0,
+          "length": 77794
+        },
+        "quad_index": {
+          "type": "Int32Array",
+          "offset": 622352,
+          "length": 77794
+        },
+        "lep1_index": {
+          "type": "Int32Array",
+          "offset": 933528,
+          "length": 77794
+        },
+        "lep2_index": {
+          "type": "Int32Array",
+          "offset": 1244704,
+          "length": 77794
+        },
+        "lep3_index": {
+          "type": "Int32Array",
+          "offset": 1555880,
+          "length": 77794
+        },
+        "lep4_index": {
+          "type": "Int32Array",
+          "offset": 1867056,
+          "length": 77794
+        },
+        "channel": {
+          "type": "Int32Array",
+          "offset": 2178232,
+          "length": 77794
+        },
+        "charge_sum": {
+          "type": "Int32Array",
+          "offset": 2489408,
+          "length": 77794
+        },
+        "n_ossf_pairs": {
+          "type": "Int32Array",
+          "offset": 2800584,
+          "length": 77794
+        },
+        "is_zz_candidate": {
+          "type": "Int32Array",
+          "offset": 3111760,
+          "length": 77794
+        },
+        "is_best": {
+          "type": "Int32Array",
+          "offset": 3422936,
+          "length": 77794
+        },
+        "mass": {
+          "type": "Float32Array",
+          "offset": 3734112,
+          "length": 77794
+        },
+        "mass_squared": {
+          "type": "Float32Array",
+          "offset": 4045288,
+          "length": 77794
+        },
+        "pt": {
+          "type": "Float32Array",
+          "offset": 4356464,
+          "length": 77794
+        },
+        "energy": {
+          "type": "Float32Array",
+          "offset": 4667640,
+          "length": 77794
+        },
+        "px": {
+          "type": "Float32Array",
+          "offset": 4978816,
+          "length": 77794
+        },
+        "py": {
+          "type": "Float32Array",
+          "offset": 5289992,
+          "length": 77794
+        },
+        "pz": {
+          "type": "Float32Array",
+          "offset": 5601168,
+          "length": 77794
+        },
+        "momentum": {
+          "type": "Float32Array",
+          "offset": 5912344,
+          "length": 77794
+        },
+        "pt_scalar": {
+          "type": "Float32Array",
+          "offset": 6223520,
+          "length": 77794
+        },
+        "dr": {
+          "type": "Float32Array",
+          "offset": 6534696,
+          "length": 77794
+        },
+        "opening_angle": {
+          "type": "Float32Array",
+          "offset": 6845872,
+          "length": 77794
+        },
+        "leading_lepton_pt": {
+          "type": "Float32Array",
+          "offset": 7157048,
+          "length": 77794
+        },
+        "subleading_lepton_pt": {
+          "type": "Float32Array",
+          "offset": 7468224,
+          "length": 77794
+        },
+        "min_lepton_pt": {
+          "type": "Float32Array",
+          "offset": 7779400,
+          "length": 77794
+        },
+        "max_abs_lepton_eta": {
+          "type": "Float32Array",
+          "offset": 8090576,
+          "length": 77794
+        },
+        "max_lepton_iso": {
+          "type": "Float32Array",
+          "offset": 8401752,
+          "length": 77794
+        },
+        "z1_mass": {
+          "type": "Float32Array",
+          "offset": 8712928,
+          "length": 77794
+        },
+        "z2_mass": {
+          "type": "Float32Array",
+          "offset": 9024104,
+          "length": 77794
+        },
+        "abs_z1_mass_minus_z": {
+          "type": "Float32Array",
+          "offset": 9335280,
+          "length": 77794
+        },
+        "abs_z2_mass_minus_z": {
+          "type": "Float32Array",
+          "offset": 9646456,
+          "length": 77794
+        },
+        "has_ossf_pairing": {
+          "type": "Int32Array",
+          "offset": 9957632,
+          "length": 77794
+        },
+        "pass_pt_hzz": {
+          "type": "Int32Array",
+          "offset": 10268808,
+          "length": 77794
+        },
+        "pass_isolation_035": {
+          "type": "Int32Array",
+          "offset": 10579984,
+          "length": 77794
+        },
+        "pass_z_windows": {
+          "type": "Int32Array",
+          "offset": 10891160,
+          "length": 77794
+        }
+      }
+    }
+  },
+  "public_metadata": {
+    "app_version": "4.0.0",
+    "runtime": "browser-only",
+    "load_warnings": [],
+    "metadata": {
+      "root_file": "zz4l_masterclass.root",
+      "input_file": "GluGluToZH_HToZZTo4L_M125_TuneCP5_13TeV-jhugenv723-pythia8.root",
+      "sample": {
+        "sample_id": 1,
+        "sample_name": "GluGluToZH_HToZZTo4L_M125"
+      },
+      "z_mass_GeV": 91.1876,
+      "description": "Signal-rich ZH simulation with H to ZZ to four leptons, reduced for a visual masterclass. It stores selected leptons, their combinations, and all possible ZZ pairing choices. It is intended for reconstruction and combinatorial-selection studies, not a physical background or significance measurement.",
+      "collections": {
+        "Events": {
+          "title": "Events",
+          "description": "One row per event. Useful for best-candidate plots and event-level counts.",
+          "default_variable": "best_m4l"
+        },
+        "Leptons": {
+          "title": "Single leptons",
+          "description": "One row per selected electron or muon.",
+          "default_variable": "pt"
+        },
+        "Dileptons": {
+          "title": "Two-lepton combinations",
+          "description": "Every possible pair of selected leptons in an event.",
+          "default_variable": "mass"
+        },
+        "QuadLeptons": {
+          "title": "Four-lepton combinations",
+          "description": "Every possible group of four selected leptons in an event.",
+          "default_variable": "mass"
+        },
+        "PairingOptions": {
+          "title": "ZZ pairing options",
+          "description": "The three ways to split a four-lepton group into two pairs.",
+          "default_variable": "score_looks_like_ZZ"
+        }
+      },
+      "variables": {
+        "pt": {
+          "label": "transverse momentum",
+          "unit": "GeV",
+          "range": [
+            0,
+            160
+          ],
+          "tooltip": "Sideways momentum, measured perpendicular to the beam."
+        },
+        "eta": {
+          "label": "eta",
+          "unit": "",
+          "range": [
+            -3,
+            3
+          ],
+          "tooltip": "Detector angle coordinate."
+        },
+        "phi": {
+          "label": "phi",
+          "unit": "rad",
+          "range": [
+            -3.141592653589793,
+            3.141592653589793
+          ],
+          "tooltip": "Azimuthal angle around the beam pipe."
+        },
+        "energy": {
+          "label": "energy",
+          "unit": "GeV",
+          "range": [
+            0,
+            500
+          ],
+          "tooltip": "Total energy of the object or combination."
+        },
+        "momentum": {
+          "label": "momentum magnitude",
+          "unit": "GeV",
+          "range": [
+            0,
+            500
+          ],
+          "tooltip": "Size of the 3D momentum vector."
+        },
+        "scalar_pt_sum": {
+          "label": "sum of lepton pT",
+          "unit": "GeV",
+          "range": [
+            0,
+            400
+          ],
+          "tooltip": "Add the individual lepton pT values. A useful comparison, but not mass."
+        },
+        "mass": {
+          "label": "combined mass",
+          "unit": "GeV",
+          "range": [
+            0,
+            250
+          ],
+          "tooltip": "The mass obtained after accounting for both energy and momentum."
+        },
+        "mass_squared": {
+          "label": "mass squared",
+          "unit": "GeV²",
+          "range": [
+            0,
+            60000
+          ],
+          "tooltip": "Energy squared minus momentum squared."
+        },
+        "energy_minus_momentum": {
+          "label": "energy minus momentum",
+          "unit": "GeV",
+          "range": [
+            0,
+            120
+          ],
+          "tooltip": "A simple attempt at removing motion from energy. It is not quite the invariant mass."
+        },
+        "dr": {
+          "label": "angular separation ΔR",
+          "unit": "",
+          "range": [
+            0,
+            6
+          ],
+          "tooltip": "How far apart two leptons are in detector angle space."
+        },
+        "opening_angle": {
+          "label": "3D opening angle",
+          "unit": "rad",
+          "range": [
+            0,
+            3.141592653589793
+          ],
+          "tooltip": "The angle between two leptons in three dimensions."
+        },
+        "charge_sum": {
+          "label": "charge sum",
+          "unit": "",
+          "range": [
+            -4,
+            4
+          ],
+          "tooltip": "Total electric charge of the combination."
+        },
+        "is_os": {
+          "label": "opposite charge",
+          "unit": "",
+          "tooltip": "1 means the two leptons have opposite electric charge."
+        },
+        "is_sf": {
+          "label": "same flavor",
+          "unit": "",
+          "tooltip": "1 means the two leptons are both electrons or both muons."
+        },
+        "is_ossf": {
+          "label": "opposite-charge same-flavor",
+          "unit": "",
+          "tooltip": "Often useful when studying Z-boson decays."
+        },
+        "best_m4l": {
+          "label": "best four-lepton mass",
+          "unit": "GeV",
+          "range": [
+            70,
+            250
+          ],
+          "tooltip": "Four-lepton mass for the best ZZ-like candidate in the event."
+        },
+        "z1_mass": {
+          "label": "Z1 candidate mass",
+          "unit": "GeV",
+          "range": [
+            40,
+            120
+          ],
+          "tooltip": "Mass of the pair closer to the known Z mass within a four-lepton candidate."
+        },
+        "z2_mass": {
+          "label": "Z2 candidate mass",
+          "unit": "GeV",
+          "range": [
+            0,
+            120
+          ],
+          "tooltip": "Mass of the other pair in the ZZ candidate."
+        },
+        "score_looks_like_ZZ": {
+          "label": "ZZ-like score",
+          "unit": "GeV",
+          "range": [
+            0,
+            140
+          ],
+          "tooltip": "A stored comparison quantity for teacher or technical views."
+        },
+        "pair_a_mass": {
+          "label": "pair A mass",
+          "unit": "GeV",
+          "range": [
+            0,
+            130
+          ],
+          "tooltip": "Mass of one pair in a proposed split of four leptons."
+        },
+        "pair_b_mass": {
+          "label": "pair B mass",
+          "unit": "GeV",
+          "range": [
+            0,
+            130
+          ],
+          "tooltip": "Mass of the other pair in a proposed split of four leptons."
+        },
+        "pair_a_energy": {
+          "label": "pair A energy",
+          "unit": "GeV",
+          "range": [
+            0,
+            250
+          ],
+          "tooltip": "Total energy of pair A."
+        },
+        "pair_b_energy": {
+          "label": "pair B energy",
+          "unit": "GeV",
+          "range": [
+            0,
+            250
+          ],
+          "tooltip": "Total energy of pair B."
+        }
+      },
+      "student_paths": [
+        {
+          "title": "Build a pair filter",
+          "collection": "Dileptons",
+          "start_variable": "mass",
+          "suggested_filters": [
+            "opposite charge",
+            "same flavor"
+          ]
+        },
+        {
+          "title": "Energy is not mass",
+          "collection": "QuadLeptons",
+          "compare_variables": [
+            "energy",
+            "momentum",
+            "scalar_pt_sum",
+            "mass"
+          ]
+        },
+        {
+          "title": "The pairing puzzle",
+          "collection": "PairingOptions",
+          "compare_variables": [
+            "pair_a_mass",
+            "pair_b_mass",
+            "score_looks_like_ZZ"
+          ]
+        }
+      ]
+    },
+    "collections": {
+      "Events": {
+        "title": "Events",
+        "description": "One row per event. Useful for best-candidate plots and event-level counts.",
+        "default_variable": "best_m4l",
+        "name": "Events",
+        "n_rows": 194716,
+        "variables": [
+          "event_index",
+          "run",
+          "luminosityBlock",
+          "event",
+          "sample_id",
+          "n_lepton",
+          "n_electron",
+          "n_muon",
+          "n_dilepton",
+          "n_ossf_dilepton",
+          "n_quad",
+          "n_zz_candidate",
+          "best_m4l",
+          "best_z1_mass",
+          "best_z2_mass",
+          "best_channel"
+        ]
+      },
+      "Leptons": {
+        "title": "Single leptons",
+        "description": "One row per selected electron or muon.",
+        "default_variable": "pt",
+        "name": "Leptons",
+        "n_rows": 493651,
+        "variables": [
+          "event_index",
+          "lepton_index",
+          "abs_pdgid",
+          "charge",
+          "pt",
+          "eta",
+          "phi",
+          "energy"
+        ]
+      },
+      "PairingOptions": {
+        "title": "ZZ pairing options",
+        "description": "The three ways to split a four-lepton group into two pairs.",
+        "default_variable": "score_looks_like_ZZ",
+        "name": "PairingOptions",
+        "n_rows": 233382,
+        "variables": [
+          "event_index",
+          "quad_index",
+          "quad_is_best",
+          "pairing_id",
+          "pair_a_lep1_index",
+          "pair_a_lep2_index",
+          "pair_b_lep1_index",
+          "pair_b_lep2_index",
+          "pair_a_mass",
+          "pair_a_mass_squared",
+          "pair_a_pt",
+          "pair_a_energy",
+          "pair_a_px",
+          "pair_a_py",
+          "pair_a_pz",
+          "pair_a_momentum",
+          "pair_a_pt_scalar",
+          "pair_a_charge_sum",
+          "pair_a_dr",
+          "pair_a_dphi",
+          "pair_a_opening_angle",
+          "pair_a_is_os",
+          "pair_a_is_sf",
+          "pair_a_is_ss",
+          "pair_b_mass",
+          "pair_b_mass_squared",
+          "pair_b_pt",
+          "pair_b_energy",
+          "pair_b_px",
+          "pair_b_py",
+          "pair_b_pz",
+          "pair_b_momentum",
+          "pair_b_pt_scalar",
+          "pair_b_charge_sum",
+          "pair_b_dr",
+          "pair_b_dphi",
+          "pair_b_opening_angle",
+          "pair_b_is_os",
+          "pair_b_is_sf",
+          "pair_b_is_ss"
+        ]
+      },
+      "QuadLeptons": {
+        "title": "Four-lepton combinations",
+        "description": "Every possible group of four selected leptons in an event.",
+        "default_variable": "mass",
+        "name": "QuadLeptons",
+        "n_rows": 77794,
+        "variables": [
+          "event_index",
+          "quad_index",
+          "lep1_index",
+          "lep2_index",
+          "lep3_index",
+          "lep4_index",
+          "channel",
+          "charge_sum",
+          "n_ossf_pairs",
+          "is_zz_candidate",
+          "is_best",
+          "mass",
+          "mass_squared",
+          "pt",
+          "energy",
+          "px",
+          "py",
+          "pz",
+          "momentum",
+          "pt_scalar",
+          "dr",
+          "opening_angle",
+          "leading_lepton_pt",
+          "subleading_lepton_pt",
+          "min_lepton_pt",
+          "max_abs_lepton_eta",
+          "max_lepton_iso",
+          "z1_mass",
+          "z2_mass",
+          "abs_z1_mass_minus_z",
+          "abs_z2_mass_minus_z",
+          "has_ossf_pairing",
+          "pass_pt_hzz",
+          "pass_isolation_035",
+          "pass_z_windows"
+        ]
+      }
+    },
+    "requirement_catalog": [
+      {
+        "id": "pair_opposite_charge",
+        "label": "Both pairs have different charges",
+        "description": "Requires a positive and a negative lepton in each selected pair.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "pair_same_type",
+        "label": "Both pairs contain the same lepton type",
+        "description": "Requires ee or μμ rather than eμ in each selected pair.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "pair_same_type_different_charge",
+        "label": "Same type, different charge",
+        "description": "Requires both selected pairs to be ee or μμ with one positive and one negative lepton.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "expected": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "available": true
+      },
+      {
+        "id": "pair_same_type_same_charge",
+        "label": "Same type, same charge",
+        "description": "Requires both selected pairs to be ee or μμ with matching charges.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "expected": [
+          1,
+          1,
+          1,
+          1
+        ],
+        "available": true
+      },
+      {
+        "id": "pair_different_type_different_charge",
+        "label": "Different type, different charge",
+        "description": "Requires both selected pairs to contain one electron and one muon with different charges.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "expected": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "available": true
+      },
+      {
+        "id": "pair_different_type_same_charge",
+        "label": "Different type, same charge",
+        "description": "Requires both selected pairs to contain one electron and one muon with matching charges.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "required",
+        "default": 1,
+        "unit": "",
+        "expected": [
+          0,
+          0,
+          1,
+          1
+        ],
+        "available": true
+      },
+      {
+        "id": "pair_min_pt",
+        "label": "Each pair pT",
+        "description": "Keeps events where both selected pairs exceed the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 20,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_min_energy",
+        "label": "Each pair energy",
+        "description": "Keeps events where both selected pairs exceed the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 35,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_min_pt_total",
+        "label": "Each pair scalar pT",
+        "description": "Adds the two lepton pT values without directional cancellation.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 30,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_min_momentum",
+        "label": "Each pair momentum",
+        "description": "Keeps events where both selected pairs exceed the momentum threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 25,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_min_mass",
+        "label": "Each pair mass — minimum",
+        "description": "Keeps events where both selected pair masses are above the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 12,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_max_mass",
+        "label": "Each pair mass — maximum",
+        "description": "Keeps events where both selected pair masses are below the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "<",
+        "default": 120,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "pair_min_dr",
+        "label": "Separation of each pair (ΔR)",
+        "description": "Removes pairs whose leptons are very close in detector angle.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 0.4,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "pair_max_dr",
+        "label": "Separation of each pair (ΔR) — maximum",
+        "description": "Keeps pairs whose leptons are not farther apart than the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "<",
+        "default": 3.5,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "pair_min_opening_angle",
+        "label": "Opening angle of each pair — minimum",
+        "description": "Keeps events where both pair opening angles exceed the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": ">",
+        "default": 0.5,
+        "unit": "rad",
+        "available": true
+      },
+      {
+        "id": "pair_max_opening_angle",
+        "label": "Opening angle of each pair — maximum",
+        "description": "Keeps events where both pair opening angles are below the threshold.",
+        "modes": [
+          "pairs"
+        ],
+        "comparison": "<",
+        "default": 3.0,
+        "unit": "rad",
+        "available": true
+      },
+      {
+        "id": "quad_charge_zero",
+        "label": "Absolute four-lepton charge",
+        "description": "A neutral parent should have a charge sum close to zero.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "≤",
+        "default": 0,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "leading_lepton_pt",
+        "label": "Leading lepton pT",
+        "description": "The H→ZZ→4ℓ selection requires one lepton above 20 GeV.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 20,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "subleading_lepton_pt",
+        "label": "Second-highest lepton pT",
+        "description": "The H→ZZ→4ℓ selection requires another lepton above 10 GeV.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 10,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "minimum_lepton_pt",
+        "label": "Lowest lepton pT",
+        "description": "Requires every lepton in the four-lepton candidate to exceed the threshold.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 5,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "max_lepton_iso",
+        "label": "Largest lepton isolation",
+        "description": "Prompt leptons are usually isolated from nearby activity.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 0.35,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "max_abs_eta",
+        "label": "Largest lepton |η|",
+        "description": "Restricts all four leptons to the detector acceptance.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 2.4,
+        "unit": "",
+        "available": true
+      },
+      {
+        "id": "z1_mass_min",
+        "label": "Higher-mass Z candidate",
+        "description": "Sets the lower edge of the Z1 candidate mass window.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 40,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "z2_mass_min",
+        "label": "Lower-mass Z candidate",
+        "description": "Sets the lower edge of the Z2 candidate mass window.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 12,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "z1_mass_max",
+        "label": "Higher-mass Z candidate",
+        "description": "Sets the upper edge of the Z1 candidate mass window.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 120,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "z2_mass_max",
+        "label": "Lower-mass Z candidate",
+        "description": "Sets the upper edge of the Z2 candidate mass window.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 120,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "z1_mass_distance",
+        "label": "Z1 distance from the Z mass",
+        "description": "Limits how far the higher-mass candidate is from the known Z mass.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 20,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "z2_mass_distance",
+        "label": "Z2 distance from the Z mass",
+        "description": "Limits how far the lower-mass candidate is from the known Z mass.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 65,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_min_pt",
+        "label": "Four-lepton pT",
+        "description": "An exploratory threshold on the combined transverse momentum.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 20,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_min_energy",
+        "label": "Four-lepton energy",
+        "description": "An exploratory threshold on the combined energy.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 120,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_min_pt_total",
+        "label": "Four-lepton scalar pT",
+        "description": "Adds all four lepton pT values without directional cancellation.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 60,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_min_momentum",
+        "label": "Four-lepton momentum",
+        "description": "An exploratory threshold on the combined three-dimensional momentum.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 30,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_min_mass",
+        "label": "Four-lepton mass — minimum",
+        "description": "Keeps candidates above the selected four-lepton mass.",
+        "modes": [
+          "four"
+        ],
+        "comparison": ">",
+        "default": 70,
+        "unit": "GeV",
+        "available": true
+      },
+      {
+        "id": "quad_max_mass",
+        "label": "Four-lepton mass — maximum",
+        "description": "Keeps candidates below the selected four-lepton mass.",
+        "modes": [
+          "four"
+        ],
+        "comparison": "<",
+        "default": 200,
+        "unit": "GeV",
+        "available": true
+      }
+    ],
+    "formula_variables": {
+      "E": "total energy of the selected particles",
+      "px": "combined x momentum",
+      "py": "combined y momentum",
+      "pz": "combined z momentum",
+      "p": "combined 3D momentum magnitude",
+      "pt": "combined transverse momentum",
+      "charge": "total charge",
+      "pt_scalar": "scalar sum of the individual lepton pT values",
+      "dr": "angular separation for a pair, or mean pairwise separation for four leptons",
+      "angle": "3D opening angle for a pair, or mean pairwise angle for four leptons"
+    }
+  }
+}

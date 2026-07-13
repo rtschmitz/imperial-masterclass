@@ -1,0 +1,526 @@
+[
+  {
+    "id": "pair_opposite_charge",
+    "label": "Both pairs have different charges",
+    "description": "Requires a positive and a negative lepton in each selected pair.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_os",
+      "pair_b_is_os"
+    ]
+  },
+  {
+    "id": "pair_same_type",
+    "label": "Both pairs contain the same lepton type",
+    "description": "Requires ee or μμ rather than eμ in each selected pair.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_sf",
+      "pair_b_is_sf"
+    ]
+  },
+  {
+    "id": "pair_same_type_different_charge",
+    "label": "Same type, different charge",
+    "description": "Requires both selected pairs to be ee or μμ with one positive and one negative lepton.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_sf",
+      "pair_b_is_sf",
+      "pair_a_is_os",
+      "pair_b_is_os"
+    ],
+    "expected": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "id": "pair_same_type_same_charge",
+    "label": "Same type, same charge",
+    "description": "Requires both selected pairs to be ee or μμ with matching charges.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_sf",
+      "pair_b_is_sf",
+      "pair_a_is_ss",
+      "pair_b_is_ss"
+    ],
+    "expected": [
+      1,
+      1,
+      1,
+      1
+    ]
+  },
+  {
+    "id": "pair_different_type_different_charge",
+    "label": "Different type, different charge",
+    "description": "Requires both selected pairs to contain one electron and one muon with different charges.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_sf",
+      "pair_b_is_sf",
+      "pair_a_is_os",
+      "pair_b_is_os"
+    ],
+    "expected": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "id": "pair_different_type_same_charge",
+    "label": "Different type, same charge",
+    "description": "Requires both selected pairs to contain one electron and one muon with matching charges.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "required",
+    "default": 1,
+    "unit": "",
+    "fields": [
+      "pair_a_is_sf",
+      "pair_b_is_sf",
+      "pair_a_is_ss",
+      "pair_b_is_ss"
+    ],
+    "expected": [
+      0,
+      0,
+      1,
+      1
+    ]
+  },
+  {
+    "id": "pair_min_pt",
+    "label": "Each pair pT",
+    "description": "Keeps events where both selected pairs exceed the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 20,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_pt",
+      "pair_b_pt"
+    ]
+  },
+  {
+    "id": "pair_min_energy",
+    "label": "Each pair energy",
+    "description": "Keeps events where both selected pairs exceed the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 35,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_energy",
+      "pair_b_energy"
+    ]
+  },
+  {
+    "id": "pair_min_pt_total",
+    "label": "Each pair scalar pT",
+    "description": "Adds the two lepton pT values without directional cancellation.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 30,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_pt_scalar",
+      "pair_b_pt_scalar"
+    ]
+  },
+  {
+    "id": "pair_min_momentum",
+    "label": "Each pair momentum",
+    "description": "Keeps events where both selected pairs exceed the momentum threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 25,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_momentum",
+      "pair_b_momentum"
+    ]
+  },
+  {
+    "id": "pair_min_mass",
+    "label": "Each pair mass — minimum",
+    "description": "Keeps events where both selected pair masses are above the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 12,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_mass",
+      "pair_b_mass"
+    ]
+  },
+  {
+    "id": "pair_max_mass",
+    "label": "Each pair mass — maximum",
+    "description": "Keeps events where both selected pair masses are below the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "<",
+    "default": 120,
+    "unit": "GeV",
+    "fields": [
+      "pair_a_mass",
+      "pair_b_mass"
+    ]
+  },
+  {
+    "id": "pair_min_dr",
+    "label": "Separation of each pair (ΔR)",
+    "description": "Removes pairs whose leptons are very close in detector angle.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 0.4,
+    "unit": "",
+    "fields": [
+      "pair_a_dr",
+      "pair_b_dr"
+    ]
+  },
+  {
+    "id": "pair_max_dr",
+    "label": "Separation of each pair (ΔR) — maximum",
+    "description": "Keeps pairs whose leptons are not farther apart than the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "<",
+    "default": 3.5,
+    "unit": "",
+    "fields": [
+      "pair_a_dr",
+      "pair_b_dr"
+    ]
+  },
+  {
+    "id": "pair_min_opening_angle",
+    "label": "Opening angle of each pair — minimum",
+    "description": "Keeps events where both pair opening angles exceed the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": ">",
+    "default": 0.5,
+    "unit": "rad",
+    "fields": [
+      "pair_a_opening_angle",
+      "pair_b_opening_angle"
+    ]
+  },
+  {
+    "id": "pair_max_opening_angle",
+    "label": "Opening angle of each pair — maximum",
+    "description": "Keeps events where both pair opening angles are below the threshold.",
+    "modes": [
+      "pairs"
+    ],
+    "comparison": "<",
+    "default": 3.0,
+    "unit": "rad",
+    "fields": [
+      "pair_a_opening_angle",
+      "pair_b_opening_angle"
+    ]
+  },
+  {
+    "id": "quad_charge_zero",
+    "label": "Absolute four-lepton charge",
+    "description": "A neutral parent should have a charge sum close to zero.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "≤",
+    "default": 0,
+    "unit": "",
+    "fields": [
+      "charge_sum"
+    ]
+  },
+  {
+    "id": "leading_lepton_pt",
+    "label": "Leading lepton pT",
+    "description": "The H→ZZ→4ℓ selection requires one lepton above 20 GeV.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 20,
+    "unit": "GeV",
+    "fields": [
+      "leading_lepton_pt"
+    ]
+  },
+  {
+    "id": "subleading_lepton_pt",
+    "label": "Second-highest lepton pT",
+    "description": "The H→ZZ→4ℓ selection requires another lepton above 10 GeV.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 10,
+    "unit": "GeV",
+    "fields": [
+      "subleading_lepton_pt"
+    ]
+  },
+  {
+    "id": "minimum_lepton_pt",
+    "label": "Lowest lepton pT",
+    "description": "Requires every lepton in the four-lepton candidate to exceed the threshold.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 5,
+    "unit": "GeV",
+    "fields": [
+      "min_lepton_pt"
+    ]
+  },
+  {
+    "id": "max_lepton_iso",
+    "label": "Largest lepton isolation",
+    "description": "Prompt leptons are usually isolated from nearby activity.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 0.35,
+    "unit": "",
+    "fields": [
+      "max_lepton_iso"
+    ]
+  },
+  {
+    "id": "max_abs_eta",
+    "label": "Largest lepton |η|",
+    "description": "Restricts all four leptons to the detector acceptance.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 2.4,
+    "unit": "",
+    "fields": [
+      "max_abs_lepton_eta"
+    ]
+  },
+  {
+    "id": "z1_mass_min",
+    "label": "Higher-mass Z candidate",
+    "description": "Sets the lower edge of the Z1 candidate mass window.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 40,
+    "unit": "GeV",
+    "fields": [
+      "z1_mass"
+    ]
+  },
+  {
+    "id": "z2_mass_min",
+    "label": "Lower-mass Z candidate",
+    "description": "Sets the lower edge of the Z2 candidate mass window.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 12,
+    "unit": "GeV",
+    "fields": [
+      "z2_mass"
+    ]
+  },
+  {
+    "id": "z1_mass_max",
+    "label": "Higher-mass Z candidate",
+    "description": "Sets the upper edge of the Z1 candidate mass window.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 120,
+    "unit": "GeV",
+    "fields": [
+      "z1_mass"
+    ]
+  },
+  {
+    "id": "z2_mass_max",
+    "label": "Lower-mass Z candidate",
+    "description": "Sets the upper edge of the Z2 candidate mass window.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 120,
+    "unit": "GeV",
+    "fields": [
+      "z2_mass"
+    ]
+  },
+  {
+    "id": "z1_mass_distance",
+    "label": "Z1 distance from the Z mass",
+    "description": "Limits how far the higher-mass candidate is from the known Z mass.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 20,
+    "unit": "GeV",
+    "fields": [
+      "abs_z1_mass_minus_z"
+    ]
+  },
+  {
+    "id": "z2_mass_distance",
+    "label": "Z2 distance from the Z mass",
+    "description": "Limits how far the lower-mass candidate is from the known Z mass.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 65,
+    "unit": "GeV",
+    "fields": [
+      "abs_z2_mass_minus_z"
+    ]
+  },
+  {
+    "id": "quad_min_pt",
+    "label": "Four-lepton pT",
+    "description": "An exploratory threshold on the combined transverse momentum.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 20,
+    "unit": "GeV",
+    "fields": [
+      "pt"
+    ]
+  },
+  {
+    "id": "quad_min_energy",
+    "label": "Four-lepton energy",
+    "description": "An exploratory threshold on the combined energy.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 120,
+    "unit": "GeV",
+    "fields": [
+      "energy"
+    ]
+  },
+  {
+    "id": "quad_min_pt_total",
+    "label": "Four-lepton scalar pT",
+    "description": "Adds all four lepton pT values without directional cancellation.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 60,
+    "unit": "GeV",
+    "fields": [
+      "pt_scalar"
+    ]
+  },
+  {
+    "id": "quad_min_momentum",
+    "label": "Four-lepton momentum",
+    "description": "An exploratory threshold on the combined three-dimensional momentum.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 30,
+    "unit": "GeV",
+    "fields": [
+      "momentum"
+    ]
+  },
+  {
+    "id": "quad_min_mass",
+    "label": "Four-lepton mass — minimum",
+    "description": "Keeps candidates above the selected four-lepton mass.",
+    "modes": [
+      "four"
+    ],
+    "comparison": ">",
+    "default": 70,
+    "unit": "GeV",
+    "fields": [
+      "mass"
+    ]
+  },
+  {
+    "id": "quad_max_mass",
+    "label": "Four-lepton mass — maximum",
+    "description": "Keeps candidates below the selected four-lepton mass.",
+    "modes": [
+      "four"
+    ],
+    "comparison": "<",
+    "default": 200,
+    "unit": "GeV",
+    "fields": [
+      "mass"
+    ]
+  }
+]

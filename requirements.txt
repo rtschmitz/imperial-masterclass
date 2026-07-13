@@ -1,5 +1,0 @@
-fastapi>=0.110
-numpy>=1.26
-pydantic>=2.6
-uproot>=5.3
-uvicorn[standard]>=0.29

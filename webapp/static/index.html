@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>CMS Four-Lepton Lab</title>
+  <link rel="stylesheet" href="/static/styles.css?v=3.1.0" />
+  <script src="/static/plotly-2.35.2.min.js?v=2.35.2"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <p class="eyebrow">Imperial × CMS masterclass</p>
+      <h1>Four-Lepton Lab</h1>
+      <p class="subtitle">Build a quantity, combine collision events, and test which choices reveal a resonance.</p>
+    </div>
+    <div class="data-status" id="statusBox">Loading data…</div>
+  </header>
+
+  <main>
+    <nav class="workflow-switcher" aria-label="Analysis task">
+      <button class="workflow active" data-workflow="z">
+        <span>1</span><b>Find the Z</b><small>two-lepton pairs</small>
+      </button>
+      <button class="workflow" data-workflow="h">
+        <span>2</span><b>Find the Higgs</b><small>four leptons</small>
+      </button>
+      <button class="workflow" data-workflow="optimize">
+        <span>3</span><b>Test selections</b><small>optimize the score</small>
+      </button>
+    </nav>
+
+    <div class="analysis-shell">
+      <aside class="card controls-card">
+        <div class="section-heading">
+          <p class="step-label" id="taskLabel">Task 1 · Z candidates</p>
+          <h2 id="taskTitle">What should we calculate for each pair?</h2>
+          <p id="taskHelp">The four leptons can be split into two pairs in three different ways.</p>
+        </div>
+
+        <div id="optimizeTargetWrap" class="control-section hidden">
+          <label>Distribution to optimize</label>
+          <div class="segmented">
+            <button class="seg active" data-target="pairs">Z candidates</button>
+            <button class="seg" data-target="four">Higgs candidates</button>
+          </div>
+        </div>
+
+        <div class="control-section formula-section">
+          <div class="label-row"><label for="formulaInput">Formula</label><button class="text-button" id="clearFormula">clear</button></div>
+          <div class="formula-input-row">
+            <input id="formulaInput" value="sqrt(E^2-px^2-py^2-pz^2)" spellcheck="false" aria-label="Formula" />
+            <button class="primary compact" id="calculateFormula">calculate</button>
+          </div>
+          <div class="quantity-palette" id="quantityPalette"></div>
+          <div id="quantityExplanation" class="quantity-explanation"></div>
+          <details class="recipes" open>
+            <summary>Suggested combinations</summary>
+            <div class="preset-grid" id="presetGrid"></div>
+          </details>
+          <p class="formula-help" id="formulaHelp"></p>
+        </div>
+
+        <div id="pairControls" class="control-section">
+          <label for="pairingRule">Pairing strategy</label>
+          <select id="pairingRule"></select>
+          <p class="field-note" id="pairingDescription"></p>
+          <label for="saveMode">Add to histogram</label>
+          <select id="saveMode">
+            <option value="both">both pair values</option>
+            <option value="larger">larger formula value</option>
+            <option value="smaller">smaller formula value</option>
+            <option value="sum">sum of the two values</option>
+            <option value="difference">difference between values</option>
+          </select>
+        </div>
+
+        <div id="channelControls" class="control-section hidden">
+          <label>Four-lepton channels</label>
+          <div class="channel-grid" id="channelGrid">
+            <button class="channel active" data-channel="all">all events</button>
+            <button class="channel" data-channel="4mu">4μ</button>
+            <button class="channel" data-channel="4e">4e</button>
+            <button class="channel" data-channel="2e2mu">2e2μ</button>
+          </div>
+        </div>
+      </aside>
+
+      <section class="card event-card">
+        <div class="card-header">
+          <div><p class="step-label">Current collision</p><h2 id="eventTitle">Four-lepton candidate</h2></div>
+          <button class="secondary compact" id="loadEvent">new event</button>
+        </div>
+        <div id="eventSummary" class="event-summary">Loading an event…</div>
+        <div id="eventDisplay" class="event-display-box"></div>
+        <div id="leptonList" class="lepton-list"></div>
+        <div id="formulaResults" class="formula-results"></div>
+      </section>
+
+      <section class="histogram-column">
+        <div class="card histogram-card">
+          <div class="card-header">
+            <div><p class="step-label">Accumulated events</p><h2>Your histogram</h2></div>
+            <details class="range-box">
+              <summary>axes</summary>
+              <div class="range-grid">
+                <label>bins<input id="histBins" type="number" value="70" min="10" max="200" /></label>
+                <label>minimum<input id="histMin" type="number" value="0" /></label>
+                <label>maximum<input id="histMax" type="number" value="160" /></label>
+              </div>
+            </details>
+          </div>
+          <p class="hist-status" id="histStatus">No events added yet.</p>
+          <div id="studentHist" class="plot"></div>
+          <div class="metric-strip">
+            <div><span>values</span><b id="histEntries">0</b></div>
+            <div><span>events accepted</span><b id="acceptedEvents">0</b></div>
+            <div class="score-metric"><span>window score S/√B</span><b id="significanceValue">—</b></div>
+          </div>
+          <p class="score-detail" id="significanceDetail">Z window: 80–100 GeV. Add events to calculate the sideband score.</p>
+          <details class="score-method">
+            <summary>What does this score mean?</summary>
+            <p><b>S</b> is the excess in the highlighted window and <b>B</b> is estimated from the adjacent sidebands. It is a classroom optimization score, not a discovery significance from physical background samples.</p>
+          </details>
+          <div class="histogram-actions">
+            <button class="secondary" id="addCurrent">add current event</button>
+            <button class="primary" id="addBatch">add 1,000 events</button>
+            <button class="secondary" id="clearHist">clear histogram</button>
+          </div>
+        </div>
+
+        <div class="card requirements-card" id="requirementsCard">
+          <div class="card-header">
+            <div><p class="step-label">Applied before events enter the histogram</p><h2>Event requirements</h2></div>
+            <span class="selection-count" id="selectionCount">0 active</span>
+          </div>
+          <div class="requirement-add-row">
+            <select id="requirementSelect" aria-label="Requirement to add"></select>
+            <button class="secondary" id="addRequirement">add requirement</button>
+          </div>
+          <div id="requirementDescription" class="field-note"></div>
+          <div id="activeRequirements" class="active-requirements">
+            <p class="empty-state">No requirements: every candidate event can enter the histogram.</p>
+          </div>
+          <div id="eventRequirementStatus" class="requirement-status neutral">The current event has no requirements to test.</div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="/static/app.js?v=3.1.0"></script>
+</body>
+</html>
