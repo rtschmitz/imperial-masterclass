@@ -1,0 +1,9 @@
+Particle Physics Analysis Tool
+Version: 3.2.8
+Build date: 2026-07-13
+
+Expected terminal banner:
+Particle Physics Analysis Tool v3.2.8
+
+Expected webpage status:
+v3.2.8
